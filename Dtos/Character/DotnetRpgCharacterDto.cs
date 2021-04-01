@@ -1,8 +1,9 @@
+using System;
 using dotnet_rpg.Models;
 
-namespace dotnet_rpg.Dtos.Character
+namespace dotnet_rpg.Dtos
 {
-    public class UpdateCharacterDto
+    public class DotnetRpgCharacterDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = "Frodo";

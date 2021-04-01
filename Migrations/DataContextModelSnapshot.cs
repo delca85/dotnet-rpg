@@ -18,15 +18,15 @@ namespace dotnet_rpg.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("dotnet_rpg.Models.Character", b =>
+            modelBuilder.Entity("dotnet_rpg.Dao.BaseObjects.BaseDotnetRpgResource", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Class")
-                        .HasColumnType("int");
+                    b.Property<string>("Class")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Defense")
                         .HasColumnType("int");

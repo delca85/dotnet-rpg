@@ -17,7 +17,7 @@ namespace dotnet_rpg.Migrations
                     Strength = table.Column<int>(type: "int", nullable: false),
                     Defense = table.Column<int>(type: "int", nullable: false),
                     Intelligence = table.Column<int>(type: "int", nullable: false),
-                    Class = table.Column<int>(type: "int", nullable: false)
+                    Class = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

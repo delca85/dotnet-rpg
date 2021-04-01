@@ -1,3 +1,4 @@
+using dotnet_rpg.Dao.BaseObjects;
 using dotnet_rpg.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,6 @@ namespace dotnet_rpg.Data
 
         }
 
-        public DbSet<Character> Characters { get; set; }
+        public DbSet<BaseDotnetRpgResource> Characters { get; set; }
     }
 }

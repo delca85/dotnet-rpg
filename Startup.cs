@@ -1,20 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using dotnet_rpg.Dao;
+using dotnet_rpg.Dao.Interfaces;
 using dotnet_rpg.Data;
 using dotnet_rpg.Repositories;
 using dotnet_rpg.Repositories.Interfaces;
 using dotnet_rpg.Services.CharacterService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace dotnet_rpg
 {
@@ -32,7 +27,7 @@ namespace dotnet_rpg
         {
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient, ServiceLifetime.Singleton);
             services.AddControllers();
-            services.AddAutoMapper(typeof(Startup));
+            services.AddSingleton<IDotnetRpgResourceDao, DotnetRpgResourceDao>();
             services.AddSingleton<IDotnetRpgRepository, DotnetRpgRepository>();
             services.AddSingleton<ICharacterService, CharacterService>();
         }

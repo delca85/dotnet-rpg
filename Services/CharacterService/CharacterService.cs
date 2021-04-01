@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
-using dotnet_rpg.Data;
-using dotnet_rpg.Dtos.Character;
+using dotnet_rpg.Dtos;
 using dotnet_rpg.Models;
 using dotnet_rpg.Repositories.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace dotnet_rpg.Services.CharacterService
 {
@@ -19,30 +15,30 @@ namespace dotnet_rpg.Services.CharacterService
             _dotnetRpgRepository = dotnetRpgRepository;
         }
 
-        public async Task<ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter)
+        public async Task<ServiceResponse<List<DotnetRpgCharacterDto>>> AddCharacter(DotnetRpgCharacterDto newCharacter)
         {
-            ServiceResponse<List<GetCharacterDto>> serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
+            ServiceResponse<List<DotnetRpgCharacterDto>> serviceResponse = new ServiceResponse<List<DotnetRpgCharacterDto>>();
             serviceResponse.Data = await _dotnetRpgRepository.AddCharacter(newCharacter);
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacters()
+        public async Task<ServiceResponse<List<DotnetRpgCharacterDto>>> GetAllCharacters()
         {
-            ServiceResponse<List<GetCharacterDto>> serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
+            ServiceResponse<List<DotnetRpgCharacterDto>> serviceResponse = new ServiceResponse<List<DotnetRpgCharacterDto>>();
             serviceResponse.Data = await _dotnetRpgRepository.GetAllCharacters();
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<GetCharacterDto>> GetCharacterById(int id)
+        public async Task<ServiceResponse<DotnetRpgCharacterDto>> GetCharacterById(int id)
         {
-            ServiceResponse<GetCharacterDto> serviceResponse = new ServiceResponse<GetCharacterDto>();
+            ServiceResponse<DotnetRpgCharacterDto> serviceResponse = new ServiceResponse<DotnetRpgCharacterDto>();
             serviceResponse.Data = await _dotnetRpgRepository.GetCharacterById(id);
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<GetCharacterDto>> UpdateCharacter(UpdateCharacterDto updatedCharacter)
+        public async Task<ServiceResponse<DotnetRpgCharacterDto>> UpdateCharacter(DotnetRpgCharacterDto updatedCharacter)
         {
-            ServiceResponse<GetCharacterDto> serviceResponse = new ServiceResponse<GetCharacterDto>();
+            ServiceResponse<DotnetRpgCharacterDto> serviceResponse = new ServiceResponse<DotnetRpgCharacterDto>();
             try
             {
                 serviceResponse.Data = await _dotnetRpgRepository.UpdateCharacter(updatedCharacter);
@@ -56,9 +52,9 @@ namespace dotnet_rpg.Services.CharacterService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetCharacterDto>>> DeleteCharacter(int id)
+        public async Task<ServiceResponse<List<DotnetRpgCharacterDto>>> DeleteCharacter(int id)
         {
-            ServiceResponse<List<GetCharacterDto>> serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
+            ServiceResponse<List<DotnetRpgCharacterDto>> serviceResponse = new ServiceResponse<List<DotnetRpgCharacterDto>>();
             try
             {
                 serviceResponse.Data = await _dotnetRpgRepository.DeleteCharacter(id);
